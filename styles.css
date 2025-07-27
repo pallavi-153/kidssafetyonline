@@ -1,0 +1,957 @@
+/* Basic Resets & Global Styles */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue - will be used for Header & some text */
+    --secondary-color: #3498db; /* A vibrant blue - for accents, buttons, underlines */
+    --accent-color: #e74c3c; /* Red - kept for potential future use or specific alerts */
+    --success-color: #2ecc71; /* Green for "Watch Now" and some elements */
+    --light-bg: #f8fbfd; /* Very light, slightly bluish background overall */
+    --card-bg: #ffffff; /* White Card Background */
+    --text-color: #333; /* Dark gray for general text */
+    --light-text-color: #ecf0f1; /* Light text for dark backgrounds (e.g., header, hero) */
+    --border-color: #e0e0e0; /* Light gray border */
+    --shadow-light: 0 2px 8px rgba(0,0,0,0.06); /* Lighter shadow */
+    --shadow-medium: 0 4px 12px rgba(0,0,0,0.1); /* Medium shadow */
+    --hover-overlay-color: rgba(52, 152, 219, 0.1); /* Light blue overlay for hover */
+    --button-hover-dark: #2980b9; /* Darker shade for blue buttons on hover */
+    --hero-gradient-start: #34495e; /* Darker grey-blue for hero background start */
+    --hero-gradient-end: #2c3e50;   /* Even darker blue for hero background end */
+    --carousel-arrow-bg: rgba(0, 0, 0, 0.45); /* Slightly transparent arrows */
+    --carousel-arrow-hover-bg: rgba(0, 0, 0, 0.7);
+    --tool-icon-circle-bg: transparent; /* Transparent background for outlined icon */
+    --tool-icon-border-color: #9bd0f7; /* Lighter blue for icon border */
+    --gradient-section-start: #fbfdff; /* Start for common section subtle gradient */
+    --gradient-section-end: #f2f6fa;   /* End for common section subtle gradient */
+
+    /* New/Adjusted for title differentiation */
+    --section-title-color: #1a2c3a; /* A slightly darker primary for titles, to stand out from header bg */
+    --section-title-underline-color: var(--secondary-color); /* Keep distinct accent color for underline */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Header Styles (Ribbon Bar) */
+header {
+    background: var(--primary-color); /* Distinct dark blue background */
+    color: var(--light-text-color);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .logo {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+header .logo a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header .logo a:hover {
+    color: var(--secondary-color);
+}
+
+header nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+header nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header nav li {
+    margin: 0 15px;
+}
+
+header nav a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+    display: block;
+}
+
+header nav a:hover,
+header nav a.active {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%); /* Different gradient background */
+    color: #fff;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 60px 0;
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-weight: 700;
+    /* Main title remains white against the dark hero background */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+}
+
+.btn {
+    display: inline-block;
+    color: #fff;
+    background: var(--secondary-color);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.btn:hover {
+    background: var(--button-hover-dark);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Common Section Styling */
+.common-section {
+    padding: 50px 0;
+    margin-bottom: 25px;
+    background: linear-gradient(to bottom right, var(--gradient-section-start), var(--gradient-section-end)); /* Subtle gradient background */
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+}
+
+.common-section h2 {
+    font-size: 2.2rem;
+    color: var(--section-title-color); /* Adjusted title color for distinction */
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.common-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    width: 70px;
+    height: 3px;
+    background-color: var(--section-title-underline-color); /* Underline with secondary color */
+    border-radius: 2px;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    color: #555;
+    font-weight: 300;
+}
+
+/* Video Category Specific Styles (Do's/Don'ts Titles) */
+.video-category-title {
+    font-size: 1.8rem;
+    color: var(--section-title-color); /* Consistent title color */
+    margin-top: 60px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-weight: 600;
+    position: relative;
+    display: block;
+    padding-left: 20px;
+}
+.video-category-title::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    transform: translateX(0);
+    bottom: -8px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--section-title-underline-color); /* Consistent underline color */
+    border-radius: 2px;
+}
+
+
+/* Carousel Wrapper for Arrows */
+.carousel-wrapper {
+    position: relative;
+    /* Calculate max-width for exactly 3 cards + 2 gaps */
+    /* 3 * 290px (card width) + 2 * 20px (gap) = 870px + 40px = 910px */
+    max-width: 910px;
+    width: 100%; /* Ensure it takes full width up to max-width */
+    margin: 15px auto 30px auto;
+    overflow: hidden; /* Crucial for clipping any partially visible 4th video */
+    /* No padding here. Arrows will overlay the content slightly on the edges. */
+    box-sizing: border-box; /* Include padding/border in the element's total width and height */
+}
+
+.video-carousel {
+    display: flex;
+    overflow-x: scroll; /* Allows scrolling */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px; /* Space for scrollbar if visible */
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 0; /* No padding on the carousel itself */
+    margin: 0; /* No margin on the carousel itself */
+}
+
+/* Hide scrollbar for most browsers */
+.video-carousel::-webkit-scrollbar {
+    display: none;
+}
+.video-carousel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.video-carousel .video-card {
+    flex: 0 0 auto;
+    width: 290px; /* Fixed width for each card */
+    scroll-snap-align: start;
+    box-sizing: border-box;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--carousel-arrow-bg);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-arrow:hover {
+    background-color: var(--carousel-arrow-hover-bg);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-arrow.left-arrow {
+    left: 10px; /* Positioned 10px from the left edge of the carousel-wrapper */
+}
+
+.carousel-arrow.right-arrow {
+    right: 10px; /* Positioned 10px from the right edge of the carousel-wrapper */
+}
+
+
+/* Video Card Specifics */
+.video-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    position: relative;
+}
+
+/* Hover effect for video card */
+.video-card .video-thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-color: var(--secondary-color);
+}
+
+.video-card:hover .video-thumbnail-overlay {
+    background-color: var(--hover-overlay-color);
+}
+
+
+.video-card h3 {
+    color: var(--primary-color);
+    margin: 15px 15px 10px 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.video-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 15px 15px 15px;
+    flex-grow: 1;
+}
+
+/* Responsive Video Embeds */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* Parental Tools Section - Rectangular Grid Items (Updated for new design) */
+.parental-tools-section {
+    text-align: center;
+}
+
+.tools-grid {
+    display: grid;
+    /* Adjusted to encourage 4 columns (one line) on larger screens */
+    /* Min width 220px, Gap 20px: (4 * 220) + (3 * 20) = 880 + 60 = 940px total width needed. */
+    /* This fits within the 1000px container with 20px padding on each side (1000-40=960px available). */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; /* Reduced gap slightly */
+    margin-top: 30px;
+    justify-content: center;
+    align-items: start;
+    padding: 0 20px;
+}
+
+.tool-item {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light); /* Subtle shadow */
+    padding: 30px 20px 20px; /* Adjusted padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: none; /* Removed the rectangular border */
+}
+
+.tool-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Slightly more prominent shadow on hover */
+}
+
+.tool-icon-wrapper {
+    background-color: var(--tool-icon-circle-bg); /* Transparent background */
+    color: var(--secondary-color); /* Blue icon color */
+    width: 80px; /* Larger icon circle */
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem; /* Larger icon size */
+    margin-bottom: 20px; /* Space below icon */
+    border: 2px solid var(--tool-icon-border-color); /* Blue outline for icon */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow on the circle */
+}
+
+.tool-item h3 {
+    color: var(--primary-color);
+    font-size: 1.35rem; /* Slightly larger title */
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.tool-item p {
+    font-size: 0.95rem; /* Slightly larger text */
+    color: #666;
+    margin-bottom: 20px; /* More space before button */
+    line-height: 1.6;
+    flex-grow: 1;
+    min-height: 70px; /* Ensures consistent card height */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Space between text and icon in button */
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 10px 22px; /* Adjusted padding for button */
+    border-radius: 6px; /* Slightly more rounded button */
+    font-weight: 500;
+    font-size: 0.95rem; /* Slightly larger button text */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: auto; /* Push button to bottom */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Button shadow */
+}
+
+.tool-btn:hover {
+    background-color: var(--button-hover-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+
+/* Resources & FAQ Section */
+.resources-faq {
+    text-align: left;
+    background: linear-gradient(to bottom left, var(--gradient-section-start), var(--gradient-section-end));
+}
+
+.resources-faq .resource-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.resources-faq .resource-links li {
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #eee;
+}
+
+.resources-faq .resource-links li:last-child {
+    border-bottom: none;
+}
+
+.resources-faq .resource-links a {
+    font-weight: 500;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resources-faq .resource-links a:hover {
+    color: var(--secondary-color);
+}
+
+.resources-faq .resource-links small {
+    display: block;
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 4px;
+    padding-left: 28px;
+}
+
+.faq-section {
+    margin-top: 40px;
+}
+
+.faq-item {
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.faq-item h4.faq-question {
+    margin: 0;
+    padding: 15px 20px;
+    background-color: #f7f7f7;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.faq-item h4.faq-question:hover {
+    background-color: #e9e9e9;
+}
+
+.faq-icon {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.faq-answer {
+    display: none;
+    padding: 12px 20px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+    background: linear-gradient(to bottom right, var(--gradient-section-start), var(--gradient-section-end));
+}
+
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-section .btn {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.contact-section .btn:hover {
+    background-color: var(--button-hover-dark);
+}
+
+.contact-note {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+
+/* Footer Styles */
+footer {
+    background: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 30px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 25px;
+    text-align: left;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px;
+}
+
+.footer-col h3 {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 6px;
+}
+
+.footer-col ul li a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.footer-col small {
+    font-size: 0.75em;
+    color: #ccc;
+}
+
+.footer-col p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: var(--light-text-color);
+    font-size: 1.5em;
+    margin-right: 12px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+
+/* Basic Responsiveness (Media Queries) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .logo {
+        margin-bottom: 10px;
+    }
+
+    header nav {
+        margin-top: 15px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav li {
+        margin: 5px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .common-section {
+        padding: 30px 15px;
+    }
+
+    .common-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-description {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    .video-category-title {
+        font-size: 1.5rem;
+        margin-top: 50px;
+        padding-left: 15px;
+    }
+    .video-category-title::after {
+        left: 15px;
+    }
+
+    .carousel-wrapper {
+        /* Re-calculate for 3 videos + 2 gaps on smaller screen with 250px cards */
+        /* 3 * 250px (card width) + 2 * 20px (gap) = 750px + 40px = 790px */
+        max-width: 790px;
+        width: 100%; /* Make it responsive up to the max-width */
+        margin: 15px auto 30px auto;
+        padding: 0; /* No padding on wrapper, arrows are inside, directly at edges */
+    }
+
+    .video-carousel {
+        padding: 0;
+        margin: 0;
+    }
+
+    .video-carousel .video-card {
+        width: 250px; /* Adjusted video card width for responsiveness */
+    }
+
+    .carousel-arrow {
+        padding: 8px;
+        font-size: 1.1rem;
+        left: 0;
+        right: 0;
+    }
+
+
+    .video-card h3, .tool-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .video-card p, .tool-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Parental Tools Responsive Adjustments */
+    .tools-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        padding: 0 15px;
+        gap: 20px;
+    }
+    .tool-item {
+        padding: 25px 15px 15px;
+    }
+    .tool-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    .tool-item h3 {
+        font-size: 1.2rem;
+    }
+    .tool-item p {
+        font-size: 0.85rem;
+        min-height: 60px;
+        margin-bottom: 15px;
+    }
+    .tool-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+
+    .faq-item h4.faq-question {
+        font-size: 0.95rem;
+        padding: 12px 18px;
+    }
+
+    .faq-answer {
+        font-size: 0.85rem;
+        padding: 12px 18px;
+    }
+
+    .contact-section form {
+        padding: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: calc(100% - 16px);
+        padding: 8px;
+    }
+
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: 15px;
+        min-width: unset;
+    }
+
+    .footer-col ul {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .social-links {
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+    .social-links a {
+        margin: 0 8px;
+    }
+}
+
+/* Even smaller screens (e.g., mobile landscape) */
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.95rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .common-section h2 {
+        font-size: 1.6rem;
+    }
+    .video-category-title {
+        font-size: 1.3rem;
+    }
+    .carousel-wrapper {
+        /* For smallest screens, adjust to show a single video fully */
+        max-width: calc(100% - 20px); /* Account for general container padding */
+        padding: 0;
+    }
+    .video-carousel .video-card {
+        /* Adjust card width to fit perfectly in the wrapper's available space */
+        width: calc(100% - 20px); /* 100% of wrapper, minus a small gap if needed */
+        margin: 0 10px; /* Add margin to center single card within smaller wrapper and create space for arrows */
+    }
+    .carousel-arrow {
+        padding: 6px;
+        font-size: 1rem;
+        /* Position arrows within the wrapper, potentially slightly overlapping the content */
+        left: 0px; /* Align to the very left of the carousel-wrapper */
+        right: 0px; /* Align to the very right of the carousel-wrapper */
+    }
+    /* Parental Tools Smallest Screen */
+    .tools-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+    }
+    .tool-item {
+        padding: 20px 15px 15px;
+    }
+    .tool-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 2.2rem;
+    }
+    .tool-item h3 {
+        font-size: 1.1rem;
+    }
+    .tool-item p {
+        font-size: 0.8rem;
+        min-height: 50px;
+        margin-bottom: 15px;
+    }
+    .tool-btn {
+        padding: 7px 15px;
+        font-size: 0.8rem;
+    }
+}
